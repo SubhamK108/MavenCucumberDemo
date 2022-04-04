@@ -5,8 +5,6 @@ import extentReports.*;
 import org.testng.*;
 import utils.*;
 
-import java.io.File;
-
 public class TestngListeners implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {
