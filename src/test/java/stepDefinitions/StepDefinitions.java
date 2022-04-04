@@ -31,7 +31,7 @@ public class StepDefinitions {
         final String expectedTitle = "GitHub: Where the world builds software · GitHub";
         String title = LandingPage.fetchPageTitle(InitializeWebDriver.webDriver);
         System.out.println("PAGE TITLE: " + title);
-        Assert.assertEquals(expectedTitle, title);
+        Assert.assertEquals(title, expectedTitle);
         System.out.println("THEN PASSED\n");
     }
 
@@ -40,7 +40,7 @@ public class StepDefinitions {
         final String expectedTitle = "Google";
         String title = LandingPage.fetchPageTitle(InitializeWebDriver.webDriver);
         System.out.println("PAGE TITLE: " + title);
-        Assert.assertEquals(expectedTitle, title);
+        Assert.assertEquals(title, expectedTitle);
         System.out.println("THEN PASSED\n");
     }
 
@@ -61,11 +61,11 @@ public class StepDefinitions {
 
     @Then("Takes a screenshot and saves it locally")
     public void takes_a_screenshot_and_saves_it_locally() {
-        String fileName = ScreenshotUtil.takeScreenshot();
-        File screenshot = new File("C:\\My_Files\\Temp\\" + fileName);
+        String filePath = ScreenshotUtil.takeScreenshot();
+        File screenshot = new File(filePath);
         boolean fileExists = screenshot.exists() && screenshot.isFile();
         Assert.assertTrue(fileExists);
-        System.out.println("SCREENSHOT FILE NAME: " + fileName);
+        System.out.println("SCREENSHOT SAVED AT: " + filePath);
         System.out.println("THEN PASSED\n");
     }
 }

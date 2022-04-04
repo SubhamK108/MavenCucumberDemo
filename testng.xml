@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="CucumberDemo2 Suit 1">
     <listeners>
-        <listener class-name="testOptions.testngListeners"/>
+        <listener class-name="testOptions.TestngListeners"/>
     </listeners>
     <test name="CucumberDemo2 Test 1">
         <classes>

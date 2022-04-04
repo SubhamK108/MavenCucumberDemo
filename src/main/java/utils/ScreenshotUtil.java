@@ -11,15 +11,30 @@ public class ScreenshotUtil {
     public static String takeScreenshot() {
         TakesScreenshot ss = (TakesScreenshot) InitializeWebDriver.webDriver;
         File screenshot = ss.getScreenshotAs(OutputType.FILE);
-        String dateStr = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HHmmss"));
-        String fileName = "TestX_" + dateStr + ".png";
-        File destinationFile = new File("C:\\My_Files\\Temp\\" + fileName);
+        String filePath = getFilePath();
+        File destinationFile = new File(filePath);
         try {
             Files.copy(screenshot.toPath(), destinationFile.toPath());
-            return fileName;
+            return filePath;
         } catch (Exception e) {
             System.out.println("Error saving screenshot!");
-            return "ERROR";
+            return filePath;
         }
+    }
+
+    private static String getFilePath() {
+        final String fileSeparator = System.getProperty("file.separator");
+        final String folderPath = System.getProperty("user.dir") + fileSeparator + "TestReport" + fileSeparator + "Screenshots";
+        final String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HHmmss"));
+        final String fileName = "TestSS_" + timeStamp + ".png";
+        final String filePath = folderPath + fileSeparator + fileName;
+
+        File ssDirectory = new File(folderPath);
+        if (!ssDirectory.exists()) {
+            if (ssDirectory.mkdir()) {
+                return filePath;
+            }
+        }
+        return filePath;
     }
 }
