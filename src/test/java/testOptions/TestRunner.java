@@ -1,13 +1,17 @@
 package testOptions;
 
-import io.cucumber.junit.*;
-import org.junit.runner.*;
+import io.cucumber.testng.*;
+import org.testng.annotations.*;
+import utils.*;
 
-@RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/java/features"},
         glue = {"stepDefinitions"},
         monochrome = true
 )
-public class TestRunner {
+public class TestRunner extends AbstractTestNGCucumberTests {
+    @AfterMethod
+    public void closeAllBrowserWindows() {
+        InitializeWebDriver.closeAllBrowserWindows();
+    }
 }

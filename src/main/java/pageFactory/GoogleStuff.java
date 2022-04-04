@@ -1,4 +1,4 @@
-package modules;
+package pageFactory;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;

@@ -1,19 +1,13 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
 import io.cucumber.java.en.*;
-import modules.*;
-import org.junit.*;
+import org.testng.*;
+import pageFactory.*;
 import utils.*;
 
 import java.io.*;
 
 public class StepDefinitions {
-    @After
-    public void closeAllBrowserWindows() {
-        InitializeWebDriver.closeAllBrowserWindows();
-    }
-
     @Given("The WebDriver is initialized")
     public void the_web_driver_is_initialized() {
         InitializeWebDriver.initializeWebDriver();
@@ -60,12 +54,14 @@ public class StepDefinitions {
     public void successfully_translates_text_from_english_to_german(String text, String targetLang) {
         String translatedText = GoogleStuff.translateText(InitializeWebDriver.webDriver, text, targetLang);
         System.out.println("TRANSLATED TEXT: " + translatedText);
+        boolean puncture = text.contains("!");
+        Assert.assertFalse(puncture);
         System.out.println("THEN PASSED\n");
     }
 
     @Then("Takes a screenshot and saves it locally")
     public void takes_a_screenshot_and_saves_it_locally() {
-        String fileName = ScreenshotUtil.takeScreenshot(InitializeWebDriver.webDriver);
+        String fileName = ScreenshotUtil.takeScreenshot();
         File screenshot = new File("C:\\My_Files\\Temp\\" + fileName);
         boolean fileExists = screenshot.exists() && screenshot.isFile();
         Assert.assertTrue(fileExists);

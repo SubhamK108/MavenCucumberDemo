@@ -8,8 +8,8 @@ import java.time.*;
 import java.time.format.*;
 
 public class ScreenshotUtil {
-    public static String takeScreenshot(WebDriver webDriver) {
-        TakesScreenshot ss = (TakesScreenshot) webDriver;
+    public static String takeScreenshot() {
+        TakesScreenshot ss = (TakesScreenshot) InitializeWebDriver.webDriver;
         File screenshot = ss.getScreenshotAs(OutputType.FILE);
         String dateStr = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HHmmss"));
         String fileName = "TestX_" + dateStr + ".png";
