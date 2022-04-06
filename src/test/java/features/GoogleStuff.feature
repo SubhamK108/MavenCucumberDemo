@@ -1,8 +1,5 @@
 Feature: Google Stuff
 
-  Background:
-    Given The WebDriver is initialized
-
   Scenario Outline: Translate a piece of text from English to a particular language.
     When Navigates to Google using "https://www.google.com" link
     And Searches Google for "translate"

@@ -1,4 +1,4 @@
-package pageFactory;
+package pageObjects;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.*;
 import java.time.Duration;
 
 public class GoogleStuff {
-    public static void searchGoogleFor(WebDriver webDriver, String text) {
+    public void searchGoogleFor(WebDriver webDriver, String text) {
         Actions actions = new Actions(webDriver);
         Action action = actions
                 .moveToElement(webDriver.findElement(By.xpath("//input[@class='gLFyf gsfi']")))
@@ -16,7 +16,7 @@ public class GoogleStuff {
         action.perform();
     }
 
-    public static String translateText(WebDriver webDriver, String text, String targetLang) {
+    public String translateText(WebDriver webDriver, String text, String targetLang) {
         Actions actions = new Actions(webDriver);
         Action action = actions
                 .moveToElement(webDriver.findElement(By.xpath("//span[@class='source-language']")))

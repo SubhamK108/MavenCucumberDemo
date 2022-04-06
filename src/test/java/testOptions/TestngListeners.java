@@ -3,7 +3,6 @@ package testOptions;
 import com.aventstack.extentreports.*;
 import extentReports.*;
 import org.testng.*;
-import utils.*;
 
 public class TestngListeners implements ITestListener {
     @Override
@@ -20,16 +19,6 @@ public class TestngListeners implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("SAAADDD :(");
-        try {
-            String filePath = ScreenshotUtil.takeScreenshot();
-            ExtentTestManager.getTest().fail(
-                    "Error Screenshot",
-                    MediaEntityBuilder.createScreenCaptureFromPath(filePath).build()
-            );
-            System.out.println("Error Screenshot saved at " + filePath);
-        } catch (Exception e) {
-            System.out.println("Screenshot not found!");
-        }
         ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
     }
 

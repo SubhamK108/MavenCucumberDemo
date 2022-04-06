@@ -8,8 +8,8 @@ import java.time.*;
 import java.time.format.*;
 
 public class ScreenshotUtil {
-    public static String takeScreenshot() {
-        TakesScreenshot ss = (TakesScreenshot) InitializeWebDriver.webDriver;
+    public static String takeScreenshot(WebDriver webDriver) {
+        TakesScreenshot ss = (TakesScreenshot) webDriver;
         File screenshot = ss.getScreenshotAs(OutputType.FILE);
         String filePath = getFilePath();
         File destinationFile = new File(filePath);
